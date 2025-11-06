@@ -1,3 +1,203 @@
+Date: 06-11-2025
+============================
+Section : G
+==========================
+Topics:
+================
+1)this and super
+2)this() and super()
+3)abstract methods
+4)abstract class
+5)interface
+
+==============================================
+1)this keyword :
+*******************************
+1)this keyword is used to refer current class object
+2)we can access instance variables using this keyword
+3)we cannot use this keyword inside static context
+
+2)super keyword
+===================
+1)From child class if we want to access parent class instance variables we can use super keyword
+2)we cannot use super keyword inside static context
+
+
+this():
+====================
+1)we can use this() to call the constructor explicitly from another constructor
+2)we cannot use this() inside static context
+3)call to this() must be first statement inside constructor
+4)we cannot use this() for methods, this() works only with constructors
+
+super():
+=========================
+1)we can use super() to call the super class constructor explicitly from child class constructor
+2)we cannot use super() inside static context
+3)call to super() must be first statement inside constructor
+4)we cannot use super() for methods, super() works only with constructors
+
+instance methods:
+==================================
+void f1(){
+    // statements
+}
+
+static methods:
+=======================================
+static void f1(){
+    // statements
+}
+
+abstract methods:
+=============================================
+1)if we place abstract keyword infront of a method then it is called abstract method
+2)abstract methods don't have body
+3)abstract methods ends with semicolon
+
+syntax:
+==================
+abstract returnType methodName(parameters);
+
+abstract class:
+==========================
+1)if we place abstract keyword infront of a class then it becomes abstract class
+2)abstract class is a blue print for other classes
+3)inside normal class we can have methods with body ( instance and static methods )
+4)inside abstract class we can have normal methods ( with body ) and abstract methods ( without body)
+5)we cannot create object for abstract class
+6)if a class contains atleast one abstract method then that class must be declared as abstract
+7)child classes are responsible to provide the implementation for abstract methods
+
+syntax:
+=====================
+abstract class ClassName{
+    // instance metods
+    // static methods
+    // abstract methods
+}
+
+interface:
+====================
+1)100% pure abstract class is called interface
+2)we have to use interface keyword to define the interface
+3)by default methods declared inside interface are public and abstract
+4)variables declared inside interface are by default public,static and final
+5)we cannot create objects for interface
+6)multiple inheritance is possible with interfaces
+7)Child class have to use implements keyword 
+
+syntax to define interface:
+=======================================
+interface InterfaceName{
+    // abstract methods
+    // constants
+}
+
+what is a constant:
+==================================
+public static final variables of a class | abstract class | interface are called constants
+
+ex:
+public static final String COMPANY_NAME="Company-1"
+public static final long  ACCOUNT_NO="424535646"
+
+===============================================================================================================================
+
+interface IEmployee{
+   void displayEmployeeDetails(); // public abstract void displayEmployeeDetails();
+   public abstract void addEmployee();
+}
+
+interface I1{
+    void f1();
+}
+
+class IEmployeeImpl implements IEmployee,I1{
+    public void f1(){
+        System.out.println("Implementation of f1() method from I1 interface");
+    }   
+    public void displayEmployeeDetails(){
+        System.out.println("Displaying Employee Details");
+    }
+    public void addEmployee(){
+        System.out.println("Adding Employee");
+    }
+    public static void main(String[] args) {
+        IEmployeeImpl emp = new IEmployeeImpl();
+        emp.displayEmployeeDetails();
+        emp.addEmployee();
+        emp.f1();
+    }
+}   
+
+==========================================================================================================================
+abstract class AbstractDemo{
+    
+   void f1(){
+    System.out.println("f1() method in AbstractDemo class");
+   }
+
+   static void f2(){
+    System.out.println("f2() method in AbstractDemo class");
+   }    
+
+  abstract void f3();
+
+  public static void main(String[] args) {
+   
+  }
+
+}
+=========================================================================
+
+
+class ChildClassForAbstractIMplementation extends AbstractDemo {
+    void f3() {
+        System.out.println("Implementation of abstract method f3() in ChildClassForAbstractIMplementation class");
+    }
+    public static void main(String[] args) {
+        ChildClassForAbstractIMplementation obj = new ChildClassForAbstractIMplementation();
+        obj.f1();
+        obj.f3();
+        obj.f2();
+    }
+}
+
+======================================================================
+class ThisDemo{
+    ThisDemo(){
+        System.out.println("This is Constructor of ThisDemo class without parameters");
+    }
+    ThisDemo(int x){
+        this();
+        System.out.println("This is Constructor of ThisDemo class with parameter: "+x);
+    }
+    public static void main(String[] args) {
+        ThisDemo obj=new ThisDemo(100);
+    }
+}
+
+===========================================================
+
+class SuperDemo extends ThisDemo {
+    SuperDemo() {
+        super(100);
+        System.out.println("This is Constructor of SuperDemo class without parameters");
+    }
+
+    SuperDemo(int x) {
+        this();
+        System.out.println("This is Constructor of SuperDemo class with parameter: " + x);
+    }
+
+    public static void main(String[] args) {
+        SuperDemo obj = new SuperDemo(100);
+    }
+}
+
+================================================================================
+
 class Parent{
     int a=90; // Instance Variable
     String name="Guest"; // Instance Variable
