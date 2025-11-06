@@ -1,0 +1,26 @@
+class Parent{
+    int a=90; // Instance Variable
+    String name="Guest"; // Instance Variable
+}
+
+class Child extends Parent {
+
+  int b; // Instance Variable
+  int a=900; // Instance Variable
+  Child(int b){
+    this.b=b;
+  }
+
+  void displayDetails(){
+    int a=800; // local variable
+    System.out.println("Value of Local Variable a :"+a);
+    System.out.println("Value of Instance Variable a in Current Class:"+this.a);
+    System.out.println("Value of Instance Variable a in Parent Class:"+super.a);
+  }
+
+  public static void main(String[] args) {
+    Child obj=new Child(1900);
+    obj.displayDetails();
+  }
+
+}
